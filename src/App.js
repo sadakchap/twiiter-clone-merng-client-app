@@ -1,9 +1,8 @@
-
 function App() {
   return (
-    <div>
-      <h1>Hello world</h1>
-    </div>
+      <div>
+        <h2>My first Apollo app 🚀</h2>
+      </div>
   );
 }
 
