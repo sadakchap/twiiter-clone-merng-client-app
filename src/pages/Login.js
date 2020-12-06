@@ -1,6 +1,7 @@
+import { useState, useContext } from "react";
 import { useMutation, gql } from "@apollo/client";
-import { useState } from "react";
 import { Button, Form } from "semantic-ui-react";
+import { AuthContext } from "../context/authContext";
 
 const Login = (props) => {
   const [error, setError] = useState({});
@@ -8,10 +9,12 @@ const Login = (props) => {
     username: "",
     password: "",
   });
+  const { login } = useContext(AuthContext);
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER_QUERY, {
     update(proxy, result) {
-      console.log(result);
+      console.log(result.data.login);
+      login(result.data.login);
       props.history.push("/");
     },
     onError(err) {
