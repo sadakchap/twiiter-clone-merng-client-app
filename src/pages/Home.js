@@ -26,7 +26,7 @@ const Home = () => {
   const { loading, data } = useQuery(FETCH_POSTS_QUERY);
 
   return (
-    <Grid columns={3}>
+    <Grid stackable columns={3}>
       <Grid.Row>
         <h1>Recents Posts</h1>
       </Grid.Row>
