@@ -27,7 +27,7 @@ const Login = (props) => {
   const onChange = (e) => {
     setValues({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.trim(),
     });
   };
 
