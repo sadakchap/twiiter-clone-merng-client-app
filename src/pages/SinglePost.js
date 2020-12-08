@@ -4,6 +4,7 @@ import { Button, Card, Grid, Icon, Image, Label } from "semantic-ui-react";
 import moment from "moment";
 import LikeButton from "../components/LikeButton";
 import { AuthContext } from "../context/authContext";
+import DeleteButton from "../components/DeleteButton";
 
 const SinglePost = (props) => {
   const postId = props.match.params.postId;
@@ -12,6 +13,10 @@ const SinglePost = (props) => {
   const { loading, data: { getPost } = {} } = useQuery(FETCH_POST_QUERY, {
     variables: { postId },
   });
+
+  const deleteButtonCallback = () => {
+    props.history.push("/");
+  };
 
   return (
     <div>
@@ -54,6 +59,12 @@ const SinglePost = (props) => {
                         {getPost.commentsCount}
                       </Label>
                     </Button>
+                    {user && user.username === getPost.username && (
+                      <DeleteButton
+                        postId={getPost.id}
+                        callback={deleteButtonCallback}
+                      />
+                    )}
                   </Card.Content>
                 </Card.Content>
               </Card>
