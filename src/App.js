@@ -7,6 +7,7 @@ import AuthProvider from "./context/authContext";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import SinglePost from "./pages/SinglePost";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <AuthRoute path="/login" exact component={Login} />
           <AuthRoute path="/register" exact component={Register} />
+          <Route path="/posts/:postId" exact component={SinglePost} />
         </Router>
       </Container>
     </AuthProvider>
