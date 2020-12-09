@@ -1,6 +1,6 @@
 import moment from "moment";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Card, Label, Icon, Image, Button, Popup } from "semantic-ui-react";
 import { AuthContext } from "../context/authContext";
 import DeleteButton from "./DeleteButton";
@@ -10,10 +10,13 @@ const PostCard = (props) => {
   const {
     post: { id, body, username, createdAt, likesCount, commentsCount, likes },
   } = props;
+  const history = useHistory();
 
   const { user } = useContext(AuthContext);
 
-  const commentOnPost = () => {};
+  const commentOnPost = () => {
+    history.push(`/posts/${id}`);
+  }
 
   return (
     <Card fluid>
